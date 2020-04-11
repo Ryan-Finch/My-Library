@@ -14,7 +14,8 @@ function Header(props){
     </div>
 
     return(
-        <nav>
+        <nav className="navbar navbar-light bg-light">
+            <h1 className="navbar-brand">My Library</h1>
             {header}
         </nav>
     )

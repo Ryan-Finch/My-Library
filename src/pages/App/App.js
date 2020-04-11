@@ -5,6 +5,8 @@ import './App.css';
 import userService from '../../services/userService';
 import LoginPage from '../Login/LoginPage'
 import SignupPage from '../Signup/SignupPage'
+import About from '../About/About'
+import BookSearch from '../BookSearch/BookSearch'
 
 class App extends Component{
   constructor(){
@@ -31,16 +33,19 @@ class App extends Component{
   render(){
     return (
       <div className="App">
-      <Switch>
-        <Route>
+      
           <Header 
           user={this.state.user}
           handleLogout={this.handleLogout}
           />
-
-
-
-
+        <Switch>
+        <Route exact path='/' render={()=>
+          <About />
+        }/>
+      
+        <Route path="/books" render={()=>
+          <BookSearch />
+        }/>
 
 
           {/* LOGIN and SIGNUP ROUTES */}
@@ -59,7 +64,7 @@ class App extends Component{
 
 
           
-        </Route>
+     
       </Switch>
         
       </div>
