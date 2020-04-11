@@ -8,7 +8,7 @@ export function getBooksSearch(searchTerm){
     return fetch(API_URL+searchTerm+order+KEY+pagination).then(res=>res.json())
 }
 
-// 'https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyDUSPfNfVXsyNu8EBMElBIm4XyZtx8LGbY'
+// 'https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=APIKEY
 
 
 
