@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {getAll} from '../../services/libraryService'
 import './Library.css'
+import noBook from '../../images/no-book.png'
 
 class Library extends Component{
 
@@ -23,7 +24,7 @@ class Library extends Component{
                     <div key={idx}>
                         <div>{book.title}</div>
                         <img 
-                            src={book.cover} 
+                            src={book.cover ? book.cover : noBook}
                             alt={book.title}
                             
                         />

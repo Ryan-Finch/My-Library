@@ -1,0 +1,22 @@
+.book-page-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 20px;
+  align-items: felx-star;
+}
+.book-page-book {
+  flex-basis: 50%;
+}
+.book-page-image {
+  margin-top: 50px;
+  flex-basis: 50%;
+  height: 50%;
+}
+.book-page-image img{
+    width: 16rem;
+    height: 25rem;
+    border: .5px black solid;
+    border-left: 0;
+    box-shadow: 2px 2px black;
+  }

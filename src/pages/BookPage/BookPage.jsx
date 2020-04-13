@@ -1,19 +1,14 @@
 import React, { Component} from 'react';
 import {getOneBook} from "../../services/booksApi"
-import * as libraryService from '../../services/libraryService'
+import AddLibraryBook from '../../components/AddLibraryBook/AddLibraryBook'
+import noBook from '../../images/no-book.png'
+import './BookPage.css'
 
 class BookPage extends Component{
 
     state ={
         book:[],
-        invalidForm: true,
-        formData:{
-            owned: false,
-            read: false,
-        }
     }
-    
-    formRef = React.createRef();
 
     componentDidMount(){
         this.getBook(this.props.match.params.id)
@@ -33,61 +28,34 @@ class BookPage extends Component{
         })
       }
 
-    handleAddLibrary = async(book, data)=>{
-        await libraryService.create(book, data);
-    }
-
-    handleChange = e => {
-        const formData ={...this.state.formData, [e.target.name]: e.target.value}
-        this.setState({
-            formData,
-            invalidForm: !this.formRef.current.checkValidity()
-        })
-    }
-    handleSubmit = e =>{
-        e.preventDefault()
-
-        this.handleAddLibrary(this.state.book, this.state.formData)
-    }
 
     render(){
         return(
             <>
-            <div>
+            <div className="book-page-container">
+                <div >
                 {this.state.book.map(bk=> 
-                <div key={bk.id}>
-                    <div>{bk.volumeInfo.title}</div>
-                    <div>{bk.volumeInfo.authors}</div>
-                    <div dangerouslySetInnerHTML={{__html: 
-                    `${bk.volumeInfo.description}`
-                    }}></div>
-                    
-                    <form ref={this.formRef} onSubmit={this.handleSubmit}>
-                    
-                        {/* <input name="title" value={bk.volumeInfo.title} placeholder={bk.volumeInfo.title} onChange={this.handleChange} hidden></input>
-                        <input name="authors" value={bk.volumeInfo.authors} 
-                       placeholder={bk.volumeInfo.authors} 
-                       onChange={this.handleChange} hidden></input>
-                        <input name="descriptions" value={bk.volumeInfo.description} placeholder={bk.volumeInfo.description} onChange={this.handleChange} hidden></input>
-                        <input name="cover" value={bk.volumeInfo.title} onChange={this.handleChange}
-                       placeholder={bk.volumeInfo.title} hidden></input> */}
+                <div className="book-page-info" key={bk.id}>
+                    <div className="book-page-book" >
+                        <h1>{bk.volumeInfo.title}</h1>
+                        <hr></hr>
+                        <h4>{bk.volumeInfo.authors}</h4>
+                        <br></br>
+                        <div dangerouslySetInnerHTML={{__html: 
+                        `${bk.volumeInfo.description}` ? `${bk.volumeInfo.description}` : 'No Details Known'
+                            }}></div>
+                    </div>
+                    <div className="book-page-image">
+                        <img src={!bk.volumeInfo.imageLinks ? noBook : bk.volumeInfo.imageLinks.small ? bk.volumeInfo.imageLinks.small : bk.volumeInfo.imageLinks.thumbnail} alt={bk.volumeInfo.title}/>
 
-                        <label>Do you own?
-                        <select name="owned" value={this.state.formData.owned} onChange={this.handleChange}>
-                            <option value="true">Yes</option>
-                            <option value="false">No</option>
-                        </select>
-                        </label>
-                        <label>Have you read?
-                        <select name="read" value={this.state.formData.read} onChange={this.handleChange}>
-                            <option value="true">Yes</option>
-                            <option value="false">No</option>
-                        </select>
-                        </label>
-                        <button type="submit" disabled={this.state.invalidForm}>Add to Library</button>
-                    </form>
+                        <AddLibraryBook 
+                            book={this.state.book}
+                        />
+                    </div>
                 </div>
                 )}
+                </div>
+              
             </div>
 
 
