@@ -1,31 +1,44 @@
-import React, { Component } from 'react';
-import {getBooksSearch} from '../../services/booksApi'
+import React, {useEffect} from 'react';
+import {Link} from "react-router-dom"
+import './BookSearch.css'
 
-class BookSearch extends Component{
+function BookSearch(props){
 
-    state={
-        books:[]
-    }
-    async componentDidMount(){
-        const searchTerm = 'a feast for crows';
-        const books = await getBooksSearch(searchTerm) 
-        console.log(books.items)
-        this.setState({
-            books: books.items
-        })
-    }
-    render(){
-        return(
-            <>
-            {this.state.books.map(book =>
+    useEffect(()=>{
+
+        return() =>{
+            props.clearBookSearch()
+        }
+    },[])
+
+    
+    return(
+        <div className='styles.container'>
             <div>
-                <p>{book.volumeInfo.title}</p>
-                <p>{book.volumeInfo.authors}</p>
+                <form className="search-books-form" onSubmit={props.handleSubmit}>
+                <input onChange={props.handleChange} value={props.searchTerm}></input>
+                <button type="submit" className="btn btn-secondary" >Submit</button>
+                </form>
             </div>
-            )}
-            </>
-        )
-    }
+
+            <div className="book-search-container">
+                {props.books.map((book,idx) =>
+                <div className="book-search-card" style={{width: '18rem'}} key={idx}>
+                <Link to={{
+                        pathname:`/book-page/${book.id}`,
+                    }}>
+                    <img 
+                        className="book-search-img rounded-right" 
+                        src={book.volumeInfo.imageLinks.thumbnail}
+                        alt={book.title}
+                    />
+                
+                 </Link> 
+                </div>
+                )}
+            </div>
+        </div>
+    )
 }
 
 export default BookSearch

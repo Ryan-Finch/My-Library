@@ -1,0 +1,4 @@
+.library-cont{
+    display: grid;
+    grid-template-grids: 1fr 1fr 1fr;
+}
