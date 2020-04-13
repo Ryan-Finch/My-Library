@@ -18,3 +18,11 @@
 .search-books-form{
     padding: 10px;
 }
+.search-books-form input{
+    border: inset;
+}
+.search-books-form button{
+    border: 1px solid black;
+    margin-left: 10px;
+    font-size: .8rem;
+}
