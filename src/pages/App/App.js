@@ -25,6 +25,7 @@ class App extends Component{
       wishList: [],
     }
   }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Library Books Update
   seperateBooks = (library) =>{
     const ownedReadBooksCopy = []
@@ -34,7 +35,7 @@ class App extends Component{
     library.map((book)=>
         book.owned && book.read ? ownedReadBooksCopy.push(book): book.owned && !book.read ? ownedUnreadBooksCopy.push(book) : wishListCopy.push(book)
     )
-    console.log(library)
+
     this.setState({
         ...this.state,
         library,
@@ -90,6 +91,7 @@ clearBookSearch = ()=>{
   })
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Render for App
 
   render(){
     return (

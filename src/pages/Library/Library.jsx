@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import {getAll} from '../../services/libraryService'
+import {getAll, getOne} from '../../services/libraryService'
 import './Library.css'
-import noBook from '../../images/no-book.png'
+// import noBook from '../../images/no-book.png'
 import OwnedReadBookShelf from '../../components/OwnedReadBookShelf/OwnedReadBookShelf';
 import OwnedUnreadBookShelf from '../../components/OwnedUnreadBooks/OwnedUnreadBooks';
 import WishList from '../../components/WishList/WishList';
 import LibraryBookInfo from '../../components/LibraryBookInfo/LirbaryBookInfo';
 import CurrentlyReading from '../../components/CurrentlyReading/CurrentlyReading';
+
 
 
 class Library extends Component{
@@ -21,9 +22,8 @@ class Library extends Component{
     }
 
     async componentDidMount(){
-        const library = await getAll();
-        console.log(library)
 
+        const library = await getAll();
         this.props.seperateBooks(library)
 
         // this.setState({
@@ -50,7 +50,15 @@ class Library extends Component{
     //     })
     //   }
 
-    
+
+    handleClick = async (e) =>{
+        const libraryBookInfo = await getOne(e.target.id)
+        
+        this.setState({
+            ...this.state,
+            libraryBookInfo,
+        })
+    }
 
     render(){
 
@@ -58,8 +66,11 @@ class Library extends Component{
             <div >
                 <div className="library-container">
 
-                    <div className="libray-profile">
-                        <LibraryBookInfo />
+                    <div className="libray-book-info">
+                        <LibraryBookInfo 
+                          libraryBookInfo={this.state.libraryBookInfo}
+                        />
+                        
                     </div>
 
                     <div className="library-current">
@@ -70,12 +81,15 @@ class Library extends Component{
                     <div className="library-shelves">
                         <h1>Library</h1>
                         <OwnedReadBookShelf 
+                            handleClick={this.handleClick}
                             ownedReadBooks={this.props.ownedReadBooks}
                         />
-                        <OwnedUnreadBookShelf 
+                        <OwnedUnreadBookShelf
+                            handleClick={this.handleClick} 
                             ownedUnreadBooks={this.props.ownedUnreadBooks}
                         />
                         <WishList 
+                            handleClick={this.handleClick}
                             wishList={this.props.wishList}
                         />
                     </div>

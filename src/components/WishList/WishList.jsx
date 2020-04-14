@@ -6,9 +6,11 @@ import './WishList.css'
 function WishList(props){
 
     const shelf = props.wishList ?  props.wishList.map((book, idx) =>
-        <Link key={idx} className="wish-list-book" to={{
-                pathname:`/book-page/${book.bookId}`,
-            }}>{book.title}</Link>
+        <div
+            key={idx} 
+            onClick={props.handleClick} className="owned-read-book"
+            id={book.bookId}>{book.title}
+        </div>
         )
         :
         'Empty Shelf'

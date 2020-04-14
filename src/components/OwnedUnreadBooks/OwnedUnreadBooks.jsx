@@ -1,13 +1,14 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
 import './OwnedUnreadBooks.css';
 
 function OwnedUnreadBookShelf(props){
 
     const shelf = props.ownedUnreadBooks ?   props.ownedUnreadBooks.map((book, idx) =>
-        <Link key={idx} className="owned-unread-book" to={{
-               pathname:`/book-page/${book.bookId}`,
-           }}>{book.title}</Link>
+        <div 
+        key={idx} 
+        onClick={props.handleClick} className="owned-unread-book"
+        id={book.bookId}
+        >{book.title}</div>
        ) 
        :
        null
