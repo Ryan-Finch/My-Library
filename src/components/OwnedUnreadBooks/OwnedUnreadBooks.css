@@ -1,0 +1,17 @@
+.owned-unread-container{
+    border: 1px solid black;
+    background-color: green;
+    height: 10vw;
+    width: 40vw;
+    display: flex;
+}
+.owned-unread-book{
+    height: 100%;
+    width: 1.5vw;
+    background-color: blue;
+    writing-mode: tb-rl;
+    border: 1px solid black;
+    overflow: hidden;
+    margin: 0 1px;
+    color: black;
+}

@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 const librarySchema = new Schema({ 
     title: {
         type: String,
-        // required: true,
+        required: true,
     },
     authors: {
         type: Array,
-        // required: true
+        required: true
     },
     description:{
         type: String
@@ -23,6 +23,10 @@ const librarySchema = new Schema({
     read:{
         type: Boolean,
         default: false
+    },
+    bookId:{
+        type: String,
+        required: true
     },
     user:{
         type: Schema.Types.ObjectId,

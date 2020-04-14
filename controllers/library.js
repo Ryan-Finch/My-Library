@@ -19,7 +19,7 @@ async function index(req,res){
 
 async function create(req,res){
     req.body.user = req.user._id;
-
+    console.log('inside')
     try{
         const library = await Library.create(req.body);
         console.log('library:', library)

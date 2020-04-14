@@ -10,7 +10,7 @@ import BookSearch from '../BookSearch/BookSearch'
 import {getBooksSearch} from "../../services/booksApi"
 import Library from "../Library/Library"
 import BookPage from '../BookPage/BookPage';
-
+import {getAll} from '../../services/libraryService'
 
 class App extends Component{
   constructor(){
@@ -18,8 +18,30 @@ class App extends Component{
     this.state = {
       user: userService.getUser(),
       books:[],
-      searchTerm: ''
+      searchTerm: '',
+      library: [],
+      ownedReadBooks: [],
+      ownedUnreadBooks: [],
+      wishList: [],
     }
+  }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Library Books Update
+  seperateBooks = (library) =>{
+    const ownedReadBooksCopy = []
+    const ownedUnreadBooksCopy = []
+    const wishListCopy = []
+
+    library.map((book)=>
+        book.owned && book.read ? ownedReadBooksCopy.push(book): book.owned && !book.read ? ownedUnreadBooksCopy.push(book) : wishListCopy.push(book)
+    )
+    console.log(library)
+    this.setState({
+        ...this.state,
+        library,
+        ownedReadBooks:  ownedReadBooksCopy,
+        ownedUnreadBooks: ownedUnreadBooksCopy,
+        wishList: wishListCopy
+    })
   }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// LOGIN/LOGOUT Methods
 
@@ -29,8 +51,14 @@ class App extends Component{
     this.setState({ user: null });
   }
 
-  handleSignupOrLogin = () => {
-    this.setState({user: userService.getUser()});
+  handleSignupOrLogin = async () => {
+    const library = await getAll();
+    console.log(library)
+    this.setState({
+      ...this.state,
+      library,
+      user: userService.getUser()
+    });
   }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Book Search Methods
 
@@ -80,7 +108,15 @@ clearBookSearch = ()=>{
       
 {/*Route To Library Page  */}
           <Route path="/user/library" render={props =>
-            <Library {...props}/>
+            <Library 
+              {...props}
+              library={this.state.library}
+              user={this.state.user}
+              seperateBooks={this.seperateBooks}
+              ownedReadBooks={this.state.ownedReadBooks}
+              ownedUnreadBooks={this.state.ownedUnreadBooks}
+              wishList={this.state.wishList}
+            />
           }/>
 
 
