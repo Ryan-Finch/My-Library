@@ -54,7 +54,7 @@ class App extends Component{
 
   handleSignupOrLogin = async () => {
     const library = await getAll();
-    console.log(library)
+ 
     this.setState({
       ...this.state,
       library,
@@ -77,6 +77,7 @@ handleSubmit = e => {
 async getBooks(searchTerm){
   if(searchTerm){
     const books = await getBooksSearch(searchTerm)
+    console.log(books)
     this.setState({...this.state,
         books: books.items,
         searchTerm: ""

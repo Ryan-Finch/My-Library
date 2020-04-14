@@ -7,11 +7,11 @@ import noBook from '../../images/no-book.png'
 
 function BookSearch(props){
 
-    useEffect(()=>{
-        return() =>{
-            props.clearBookSearch()
-        }
-    },[])
+    // useEffect(()=>{
+    //     return() =>{
+    //         props.clearBookSearch()
+    //     }
+    // },[])
 
     
     return(

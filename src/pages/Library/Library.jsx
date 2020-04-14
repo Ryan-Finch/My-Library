@@ -13,12 +13,12 @@ import CurrentlyReading from '../../components/CurrentlyReading/CurrentlyReading
 class Library extends Component{
 
     state={
-        // library: [],
         currentlyReading: '',
         libraryBookInfo: [],
         // ownedReadBooks: [],
         // ownedUnreadBooks: [],
         // wishList: [],
+         // library: [],
     }
 
     async componentDidMount(){
@@ -52,8 +52,8 @@ class Library extends Component{
 
 
     handleClick = async (e) =>{
+
         const libraryBookInfo = await getOne(e.target.id)
-        
         this.setState({
             ...this.state,
             libraryBookInfo,
@@ -66,39 +66,40 @@ class Library extends Component{
             <div >
                 <div className="library-container">
 
-                    <div className="libray-book-info">
-                        <LibraryBookInfo 
-                          libraryBookInfo={this.state.libraryBookInfo}
-                        />
-                        
-                    </div>
-
-                    <div className="library-current">
-                    <CurrentlyReading />
-                    </div>
-
-
                     <div className="library-shelves">
-                        <h1>Library</h1>
-                        <OwnedReadBookShelf 
-                            handleClick={this.handleClick}
-                            ownedReadBooks={this.props.ownedReadBooks}
-                        />
-                        <OwnedUnreadBookShelf
-                            handleClick={this.handleClick} 
-                            ownedUnreadBooks={this.props.ownedUnreadBooks}
-                        />
-                        <WishList 
-                            handleClick={this.handleClick}
-                            wishList={this.props.wishList}
-                        />
+                            <h1>Library</h1>
+                            <OwnedReadBookShelf 
+                                handleClick={this.handleClick}
+                                ownedReadBooks={this.props.ownedReadBooks}
+                            />
+                            <OwnedUnreadBookShelf
+                                handleClick={this.handleClick} 
+                                ownedUnreadBooks={this.props.ownedUnreadBooks}
+                            />
+                            <WishList 
+                                handleClick={this.handleClick}
+                                wishList={this.props.wishList}
+                            />
+                    </div>    
+
+                    <div className="library-current-info">
+                        <div className="library-book-info">
+                            <LibraryBookInfo 
+                                libraryBookInfo={this.state.libraryBookInfo}
+                            /> 
+                        </div>
+                        <div className="library-current">
+                            <CurrentlyReading 
+                                
+                            />
+                        </div>
+
+                       
                     </div>
 
-                    
                 </div>
-                
-            </div>
 
+            </div>
         )
     }
 }

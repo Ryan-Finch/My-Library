@@ -22,7 +22,6 @@ class BookPage extends Component{
 
     getBook = async id=>{
         const book = await getOneBook(id)
-        console.log(book.volumeInfo.title)
         this.setState({...this.state,
           book: [book]
         })
