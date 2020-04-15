@@ -1,0 +1,4 @@
+.curr-read-container{
+    display: flex;
+    flex-direction: column;
+}

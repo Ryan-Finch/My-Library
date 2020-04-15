@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import './CurrentlyReading.css'
 
 function CurrentlyReading(props) {
 
@@ -8,6 +9,7 @@ function CurrentlyReading(props) {
         <>
         <div>
         <h1>Currently Reading</h1>
+            <div className="curr-read-container">
             {props.library.map((book,idx)=>
                 book.currentlyReading ? 
                 <Link key={idx} to={{
@@ -17,7 +19,8 @@ function CurrentlyReading(props) {
                 </Link>
                 :
                 null
-            )}  
+            )} 
+            </div> 
         </div>
         </>
     )

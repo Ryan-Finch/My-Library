@@ -55,7 +55,7 @@ export function create(book, data){
 }
 
 export function deleteOne(book){
-    console.log(book.bookId)
+
     return fetch(BASE_URL+'/'+book.bookId, {
         method: 'DELETE',
         headers: {

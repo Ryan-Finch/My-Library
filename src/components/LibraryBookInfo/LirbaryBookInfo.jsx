@@ -9,6 +9,8 @@ function LibraryBookInfo(props){
     props.libraryBookInfo.map((bk,idx)=>
     
         <div key={idx}>
+            <h1>Book Info</h1>
+            <hr></hr>
             <h3>{bk.title}</h3>
             <Link to={{
                     pathname:`/book-page/${bk.bookId}`,
@@ -26,6 +28,7 @@ function LibraryBookInfo(props){
         :
         <div>
             <h1>Book Info</h1>
+            <hr></hr>
         </div>
 
     return(

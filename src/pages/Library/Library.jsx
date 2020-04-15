@@ -38,12 +38,13 @@ class Library extends Component{
         }
 
         const updatedBook = await update(currentlyReading,e.target.id)
-        this.setState({
+        const library = await getAll();
+        await this.props.seperateBooks(library)
+        await this.setState({
             ...this.state,
             libraryBookInfo: updatedBook,
         })
-        const library = await getAll();
-        this.props.seperateBooks(library)
+
     }
 
     render(){
@@ -51,6 +52,15 @@ class Library extends Component{
         return(
             <div >
                 <div className="library-container">
+
+                    <div className="library-curr-read">
+                        <div className="library-current">
+                            <CurrentlyReading 
+                                library={this.props.library}
+                            />
+                        </div>
+
+                    </div>
 
                     <div className="library-shelves">
                             <h1>Library</h1>
@@ -68,20 +78,13 @@ class Library extends Component{
                             />
                     </div>    
 
-                    <div className="library-current-info">
+                    <div className="library-info">
                         <div className="library-book-info">
                             <LibraryBookInfo 
                                 libraryBookInfo={this.state.libraryBookInfo}
                                 handleCurrentlyReading={this.handleCurrentlyReading}
                             /> 
                         </div>
-                        <div className="library-current">
-                            <CurrentlyReading 
-                                library={this.props.library}
-                            />
-                        </div>
-
-                       
                     </div>
 
                 </div>

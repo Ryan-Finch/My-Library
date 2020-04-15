@@ -19,7 +19,6 @@ app.use('/api/google', require('./routes/api/google'))
 app.use('/api/library', require('./routes/api/library'));
 
 
-//Catch All Route, all routes above this
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
   });

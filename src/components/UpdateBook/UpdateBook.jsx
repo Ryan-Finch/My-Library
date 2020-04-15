@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as libraryService from '../../services/libraryService'
+import {Link} from 'react-router-dom'
 
 
 class UpdateBook extends Component{
@@ -27,7 +28,9 @@ class UpdateBook extends Component{
     
     handleUpdateBook = async(data)=>{
         await libraryService.update(data, this.props.bookOwned[0].bookId);
-    }
+        await this.props.refreshLibrary()
+        await this.props.updateOwnedBook(this.props.bookOwned[0].bookId)
+    }   
 
     handleChange = e => {
         const formData ={...this.state.formData, [e.target.name]: e.target.value}
@@ -50,6 +53,8 @@ class UpdateBook extends Component{
                 read:false,
             }
         })
+        await this.props.refreshLibrary()
+        await this.props.deleteOwnedBook()
     }
 
 
@@ -94,7 +99,7 @@ class UpdateBook extends Component{
                 </form>
 
                 <button onClick={this.handleDeleteSubmit} className="btn btn-secondary" type="submit">Delete from Library</button>
-
+                <Link to='/library' className="btn btn-secondary">Your Library</Link>
             </div>
             </>
         )

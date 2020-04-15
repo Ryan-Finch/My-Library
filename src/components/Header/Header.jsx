@@ -8,7 +8,7 @@ function Header(props){
         <h1 className="navbar-brand">{props.user.name}'s Library</h1>
         <div>
             <Link to='/books'>Search</Link>&nbsp;&nbsp; | &nbsp;&nbsp;
-            <Link to='/user/library'>Library</Link>&nbsp;&nbsp; | &nbsp;&nbsp;
+            <Link to='/library'>Library</Link>&nbsp;&nbsp; | &nbsp;&nbsp;
             <Link to='/'>About</Link>&nbsp;&nbsp; | &nbsp;&nbsp;
             <Link to='' onClick={props.handleLogout}>Log Out</Link>
         </div>

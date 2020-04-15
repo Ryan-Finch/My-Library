@@ -4,6 +4,7 @@ import AddLibraryBook from '../../components/AddLibraryBook/AddLibraryBook'
 import noBook from '../../images/no-book.png'
 import './BookPage.css'
 import UpdateBook from '../../components/UpdateBook/UpdateBook'
+// import {getAll} from '../../services/libraryService'
 
 class BookPage extends Component{
 
@@ -12,33 +13,18 @@ class BookPage extends Component{
         bookOwned: []
     }
 
-    componentDidMount(){
+    async componentDidMount(){
 
+        if(!this.props.library.length){ 
+            this.props.refreshLibrary()
+        }
         this.getBook(this.props.match.params.id)
-        console.log('mounting')
-        // this.props.library.map(book =>{
-        //     if (book.bookId === this.props.match.params.id){
-        //         this.setState({
-        //             ...this.state,
-        //             bookOwned: true
-        //         })
-        //     }else{
-        //         return 
-        //     }
-        // })
     }
 
-    // componentWillUnmount(){
-    //     this.setState({...this.state,
-    //         book: [],
-    //         bookOwned: false
-    //     })
-    // }
-
-    getBook = async id=>{
-        console.log('working?')
+    getBook = async id =>{
         const book = await getOneBook(id)
-        this.props.library.map(bk =>{
+
+         await this.props.library.map(bk =>{
             if (bk.bookId === id){
                 return this.setState({
                     ...this.state,
@@ -46,11 +32,35 @@ class BookPage extends Component{
                 })
             }
         })
+
         this.setState({...this.state,
             book: [book]
         }) 
 
       }
+    
+    updateOwnedBook = async (id) =>{
+        await this.props.library.map(bk =>{
+            if (bk.bookId === id){
+                return this.setState({
+                    ...this.state,
+                    bookOwned: [bk]
+                })
+            }else{
+                this.setState({
+                    ...this.state,
+                    bookOwned:[]
+                })
+            }
+        })
+    }
+
+    deleteOwnedBook = () =>{
+        this.setState({
+            ...this.state,
+            bookOwned:[]
+        })
+    }
 
     render(){
         return(
@@ -74,12 +84,19 @@ class BookPage extends Component{
 
                     {!this.state.bookOwned.length ?
                         <AddLibraryBook 
+                            {...this.props}
                             book={this.state.book}
+                            refreshLibrary={this.props.refreshLibrary}
+                            updateOwnedBook={this.updateOwnedBook}
                         />
                         :
                         <UpdateBook 
+                            {...this.props}
                             book={this.state.book}
                             bookOwned={this.state.bookOwned}
+                            refreshLibrary={this.props.refreshLibrary}
+                            updateOwnedBook={this.updateOwnedBook}
+                            deleteOwnedBook={this.deleteOwnedBook}
                         />
                     }
                     </div>

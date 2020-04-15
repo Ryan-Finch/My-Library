@@ -5,7 +5,6 @@ import "./AddLibrary.css"
 class AddLibraryBook extends Component{
 
     state={
-        // invalidForm: true,
         formData:{
             owned: false,
             read: false,
@@ -16,6 +15,9 @@ class AddLibraryBook extends Component{
 
     handleAddLibrary = async(book, data)=>{
         await libraryService.create(book, data);
+        await this.props.refreshLibrary();
+        await this.props.updateOwnedBook(book[0].id)
+        // this.props.history.push('/library');
     }
 
     handleChange = e => {
@@ -50,7 +52,6 @@ class AddLibraryBook extends Component{
                     </label>
                 </div>
                     <button className="btn btn-secondary" type="submit" >
-                    {/* disabled={this.state.invalidForm} */}
                     {this.state.formData.owned ? 'Add to Library' : 'Add to Wish List'}
                     </button>
                 

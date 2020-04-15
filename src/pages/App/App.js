@@ -44,6 +44,14 @@ class App extends Component{
         wishList: wishListCopy
     })
   }
+
+  refreshLibrary = async () =>{
+    const library = await getAll()
+    this.setState({
+      ...this.state,
+      library
+    })
+  }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// LOGIN/LOGOUT Methods
 
   handleLogout = () => {
@@ -108,7 +116,7 @@ clearBookSearch = ()=>{
           }/>
       
 {/*Route To Library Page  */}
-          <Route path="/user/library" render={props =>
+          <Route path="/library" render={props =>
             <Library 
               {...props}
               library={this.state.library}
@@ -126,6 +134,7 @@ clearBookSearch = ()=>{
             <BookPage 
               {...props}
               library={this.state.library}
+              refreshLibrary={this.refreshLibrary}
             />
           }/>
 
