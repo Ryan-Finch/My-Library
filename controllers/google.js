@@ -8,7 +8,7 @@ const fetch = require("node-fetch")
 
 module.exports={
     getKey,
-    getOne
+    getOne,
 }
 
 async function getKey(req,res){
@@ -34,6 +34,8 @@ async function getOne(req,res){
         res.status(500).json(err)
     }
 }
+
+
 
 // return fetch(API_URL+searchTerm+MANY_KEY + order + pagination).then(res => res.json())
 

@@ -47,7 +47,6 @@ class App extends Component{
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// LOGIN/LOGOUT Methods
 
   handleLogout = () => {
-    console.log('logout')
     userService.logout();
     this.setState({ user: null });
   }
@@ -77,7 +76,6 @@ handleSubmit = e => {
 async getBooks(searchTerm){
   if(searchTerm){
     const books = await getBooksSearch(searchTerm)
-    console.log(books)
     this.setState({...this.state,
         books: books.items,
         searchTerm: ""

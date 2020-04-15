@@ -1,6 +1,7 @@
 import React from 'react';
 import './LibraryBookInfo.css'
 import {Link} from 'react-router-dom'
+import CurrReadButton from '../CurrReadButton/CurrReadButton';
 
 function LibraryBookInfo(props){
 
@@ -15,7 +16,12 @@ function LibraryBookInfo(props){
             <img src={bk.cover} alt={bk.title}/>
             </Link>
             <p>{bk.authors}</p>
+            <CurrReadButton 
+                handleCurrentlyReading={props.handleCurrentlyReading}
+                bk={bk}
+            />
         </div>
+        
         )
         :
         <div>
@@ -26,6 +32,7 @@ function LibraryBookInfo(props){
         <>
         <div>
             {showBook}
+            
         </div>
         </>
     )

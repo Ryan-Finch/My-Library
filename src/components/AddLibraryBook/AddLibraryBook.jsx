@@ -22,13 +22,14 @@ class AddLibraryBook extends Component{
         const formData ={...this.state.formData, [e.target.name]: e.target.value}
         this.setState({
             formData,
-            // invalidForm: !this.formRef.current.checkValidity()
         })
     }
     handleSubmit = e =>{
         e.preventDefault()
         this.handleAddLibrary(this.props.book, this.state.formData)
     }
+
+
 
     render(){
         return(

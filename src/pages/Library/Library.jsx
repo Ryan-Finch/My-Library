@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {getAll, getOne} from '../../services/libraryService'
+import {getAll, getOne, update} from '../../services/libraryService'
 import './Library.css'
 // import noBook from '../../images/no-book.png'
 import OwnedReadBookShelf from '../../components/OwnedReadBookShelf/OwnedReadBookShelf';
@@ -13,12 +13,7 @@ import CurrentlyReading from '../../components/CurrentlyReading/CurrentlyReading
 class Library extends Component{
 
     state={
-        currentlyReading: '',
         libraryBookInfo: [],
-        // ownedReadBooks: [],
-        // ownedUnreadBooks: [],
-        // wishList: [],
-         // library: [],
     }
 
     async componentDidMount(){
@@ -26,30 +21,7 @@ class Library extends Component{
         const library = await getAll();
         this.props.seperateBooks(library)
 
-        // this.setState({
-        //     ...this.props.state,
-        //     library
-        // })
     }
-
-    // seperateBooks = (library) =>{
-    //     const ownedReadBooksCopy = []
-    //     const ownedUnreadBooksCopy = []
-    //     const wishListCopy = []
-    
-    //     library.map((book)=>
-    //         book.owned && book.read ? ownedReadBooksCopy.push(book): book.owned && !book.read ? ownedUnreadBooksCopy.push(book) : wishListCopy.push(book)
-    //     )
-    //     console.log(library)
-    //     this.setState({
-    //         ...this.state,
-    //         library,
-    //         ownedReadBooks:  ownedReadBooksCopy,
-    //         ownedUnreadBooks: ownedUnreadBooksCopy,
-    //         wishList: wishListCopy
-    //     })
-    //   }
-
 
     handleClick = async (e) =>{
 
@@ -58,6 +30,20 @@ class Library extends Component{
             ...this.state,
             libraryBookInfo,
         })
+    }
+
+    handleCurrentlyReading =async (e) =>{
+        const currentlyReading={
+            currentlyReading: e.target.value
+        }
+
+        const updatedBook = await update(currentlyReading,e.target.id)
+        this.setState({
+            ...this.state,
+            libraryBookInfo: updatedBook,
+        })
+        const library = await getAll();
+        this.props.seperateBooks(library)
     }
 
     render(){
@@ -86,11 +72,12 @@ class Library extends Component{
                         <div className="library-book-info">
                             <LibraryBookInfo 
                                 libraryBookInfo={this.state.libraryBookInfo}
+                                handleCurrentlyReading={this.handleCurrentlyReading}
                             /> 
                         </div>
                         <div className="library-current">
                             <CurrentlyReading 
-                                
+                                library={this.props.library}
                             />
                         </div>
 

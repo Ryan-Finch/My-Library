@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Link} from "react-router-dom"
 import './BookSearch.css'
 import noBook from '../../images/no-book.png'
@@ -6,13 +6,6 @@ import noBook from '../../images/no-book.png'
 
 
 function BookSearch(props){
-
-    // useEffect(()=>{
-    //     return() =>{
-    //         props.clearBookSearch()
-    //     }
-    // },[])
-
     
     return(
         <div className='styles.container'>

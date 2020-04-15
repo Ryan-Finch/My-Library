@@ -28,6 +28,10 @@ const librarySchema = new Schema({
         type: String,
         required: true
     },
+    currentlyReading:{
+        type: Boolean,
+        default: false
+    },
     user:{
         type: Schema.Types.ObjectId,
         ref: 'User'

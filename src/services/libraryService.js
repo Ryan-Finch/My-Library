@@ -1,5 +1,6 @@
 // import userService from './userService'
 import tokenService from './tokenService'
+import fetch from 'node-fetch';
 
 const BASE_URL= '/api/library'
 
@@ -17,6 +18,18 @@ export function getOne(id){
             'Authorization': `Bearer ${tokenService.getToken()}`
         }
     }).then(res => res.json());
+}
+
+export function update(updateInfo,id){
+
+    return fetch(BASE_URL+'/'+id,{
+        method:'PUT',
+        headers:{
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${tokenService.getToken()}`
+        },
+        body: JSON.stringify(updateInfo)  
+    }).then(res => res.json())
 }
 
 export function create(book, data){
