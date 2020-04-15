@@ -4,7 +4,8 @@ module.exports ={
     create,
     index,
     indexOne,
-    update
+    update,
+    delete: deleteOne
 };
 
 //All Index
@@ -50,6 +51,16 @@ async function update(req,res){
     try{
         const updatedLibrary = await Library.findOneAndUpdate({user:req.user._id, bookId: req.params.id}, req.body, {new:true})
         res.status(200).json(updatedLibrary)
+    }catch(err){
+        res.status(500).json(err)
+    }
+}
+
+//Delete One
+async function deleteOne(req,res){
+    try{
+        const deletedBook= await Library.findOneAndDelete({user:req.user._id, bookId: req.params.id});
+        res.status(200).json(deletedBook)
     }catch(err){
         res.status(500).json(err)
     }

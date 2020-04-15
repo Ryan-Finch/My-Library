@@ -3,30 +3,54 @@ import {getOneBook} from "../../services/booksApi"
 import AddLibraryBook from '../../components/AddLibraryBook/AddLibraryBook'
 import noBook from '../../images/no-book.png'
 import './BookPage.css'
+import UpdateBook from '../../components/UpdateBook/UpdateBook'
 
 class BookPage extends Component{
 
     state ={
         book:[],
+        bookOwned: []
     }
 
     componentDidMount(){
+
         this.getBook(this.props.match.params.id)
+        console.log('mounting')
+        // this.props.library.map(book =>{
+        //     if (book.bookId === this.props.match.params.id){
+        //         this.setState({
+        //             ...this.state,
+        //             bookOwned: true
+        //         })
+        //     }else{
+        //         return 
+        //     }
+        // })
     }
 
-    componentWillUnmount(){
-        this.setState({...this.state,
-            book: []
-        })
-    }
+    // componentWillUnmount(){
+    //     this.setState({...this.state,
+    //         book: [],
+    //         bookOwned: false
+    //     })
+    // }
 
     getBook = async id=>{
+        console.log('working?')
         const book = await getOneBook(id)
-        this.setState({...this.state,
-          book: [book]
+        this.props.library.map(bk =>{
+            if (bk.bookId === id){
+                return this.setState({
+                    ...this.state,
+                    bookOwned: [bk]
+                })
+            }
         })
-      }
+        this.setState({...this.state,
+            book: [book]
+        }) 
 
+      }
 
     render(){
         return(
@@ -47,9 +71,17 @@ class BookPage extends Component{
                     <div className="book-page-image">
                         <img src={!bk.volumeInfo.imageLinks ? noBook : bk.volumeInfo.imageLinks.small ? bk.volumeInfo.imageLinks.small : bk.volumeInfo.imageLinks.thumbnail} alt={bk.volumeInfo.title}/>
 
+
+                    {!this.state.bookOwned.length ?
                         <AddLibraryBook 
                             book={this.state.book}
                         />
+                        :
+                        <UpdateBook 
+                            book={this.state.book}
+                            bookOwned={this.state.bookOwned}
+                        />
+                    }
                     </div>
                 </div>
                 )}

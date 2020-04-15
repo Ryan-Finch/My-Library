@@ -53,3 +53,13 @@ export function create(book, data){
         body: JSON.stringify(library)
     }).then(res =>res.json());
 }
+
+export function deleteOne(book){
+    console.log(book.bookId)
+    return fetch(BASE_URL+'/'+book.bookId, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${tokenService.getToken()}`
+        },
+    }).then(res => res.json());
+}

@@ -125,6 +125,7 @@ clearBookSearch = ()=>{
           <Route path="/book-page/:id" render={(props)=>
             <BookPage 
               {...props}
+              library={this.state.library}
             />
           }/>
 
