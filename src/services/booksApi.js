@@ -1,9 +1,9 @@
 import tokenService from './tokenService'
 
-const GOOGLE_API = '/api/google'
+const BASE_URL = '/api/google'
 
 export function getBooksSearch(term){
-    return fetch(GOOGLE_API+'/'+term,
+    return fetch(BASE_URL+'/'+term,
     {
         headers:{
             'Authorization': `Bearer ${tokenService.getToken()}`
@@ -14,7 +14,7 @@ export function getBooksSearch(term){
 
 export function getOneBook(id){
   
-    return fetch(GOOGLE_API+'/volume/'+id,
+    return fetch(BASE_URL+'/volume/'+id,
     {
         headers:{
             'Authorization': `Bearer ${tokenService.getToken()}`

@@ -12,7 +12,7 @@ module.exports={
 }
 
 async function getKey(req,res){
-
+    console.log(API_URL + req.params.term +MANY_KEY + order + pagination)
     try{
         const searchResults = await fetch(API_URL + req.params.term +MANY_KEY + order + pagination).then(res => res.json())
 
@@ -34,9 +34,3 @@ async function getOne(req,res){
         res.status(500).json(err)
     }
 }
-
-
-
-// return fetch(API_URL+searchTerm+MANY_KEY + order + pagination).then(res => res.json())
-
-// 'https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=APIKEY

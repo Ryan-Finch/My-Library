@@ -8,25 +8,32 @@ import SignupPage from '../Signup/SignupPage'
 import About from '../About/About'
 import BookSearch from '../BookSearch/BookSearch'
 import {getBooksSearch} from "../../services/booksApi"
+import {getVideosSearch} from "../../services/videosApi"
 import Library from "../Library/Library"
 import BookPage from '../BookPage/BookPage';
 import {getAll} from '../../services/libraryService'
+import * as videoLibraryService from '../../services/videoLibraryService'
 
 class App extends Component{
   constructor(){
     super()
     this.state = {
       user: userService.getUser(),
+      searchState: 'Book',
       books:[],
       searchTerm: '',
       library: [],
+      videos: [],
+      video: [],
+      videoLibrary: [],
       ownedReadBooks: [],
       ownedUnreadBooks: [],
       wishList: [],
     }
   }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Library Books Update
+//////////////////////////////////////////////////////////////////////////
+////////////////////////Library Books Update
   seperateBooks = (library) =>{
     const ownedReadBooksCopy = []
     const ownedUnreadBooksCopy = []
@@ -52,7 +59,8 @@ class App extends Component{
       library
     })
   }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// LOGIN/LOGOUT Methods
+/////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////// LOGIN/LOGOUT Methods
 
   handleLogout = () => {
     userService.logout();
@@ -68,7 +76,8 @@ class App extends Component{
       user: userService.getUser()
     });
   }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Book Search Methods
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////// Book Search Methods
 
 handleChange = e =>{  
   this.setState({...this.state,
@@ -91,14 +100,60 @@ async getBooks(searchTerm){
   }
 }
 
-clearBookSearch = ()=>{
+clearBookSearch = () =>{
   this.setState({
     ...this.state,
     books: []
   })
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Render for App
+
+///////////////////////////////////////////////////////////
+////////// Handle switch between books/videos
+
+handleSwitch=(e)=>{
+  
+  this.setState({
+    ...this.state,
+    searchState: e.target.value
+  })
+}
+
+////////////////////////////////////////////////////////////////
+//////////////////////////// Video Search Functions
+handleVideoSubmit = e => {
+  e.preventDefault()
+  this.getVideos(this.state.searchTerm)
+} 
+
+async getVideos(searchTerm){
+  if(searchTerm){
+    const videos = await getVideosSearch(searchTerm)
+    this.setState({
+      ...this.state,
+        videos: videos.items,
+        searchTerm: ""
+    })
+  }
+}
+//////Video Add Functions
+
+handleAddVideo = async(video)=>{
+
+  await videoLibraryService.create(video)
+}
+handleVideoLibrarySubmit = e =>{
+  e.preventDefault()
+
+  const video={
+    title: e.target.name,
+    description: e.target.value,
+    videoId: e.target.id
+  }
+  this.handleAddVideo(video)
+}
+////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////Render for App
 
   render(){
     return (
@@ -135,6 +190,7 @@ clearBookSearch = ()=>{
               {...props}
               library={this.state.library}
               refreshLibrary={this.refreshLibrary}
+              
             />
           }/>
 
@@ -144,10 +200,17 @@ clearBookSearch = ()=>{
             <BookSearch 
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
+              handleVideoSubmit={this.handleVideoSubmit}
+              handleSwitch={this.handleSwitch}
               getBooks={this.getBooks}
+              getVideos={this.getVideos}
               searchTerm={this.state.searchTerm}
+              // videoSearchTerm={this.state.videoSearchTerm}
               books={this.state.books}
+              videos={this.state.videos}
               clearBookSearch={this.clearBookSearch}
+              searchState={this.state.searchState}
+              handleVideoLibrarySubmit={this.handleVideoLibrarySubmit}
             />
           }/>
 
