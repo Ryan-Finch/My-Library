@@ -68,7 +68,19 @@ class App extends Component{
 
   handleLogout = () => {
     userService.logout();
-    this.setState({ user: null });
+    this.setState({ 
+      user: null,
+      searchState: 'Book',
+      books:[],
+      searchTerm: '',
+      library: [],
+      videos: [],
+      video: [],
+      videoLibrary: [],
+      ownedReadBooks: [],
+      ownedUnreadBooks: [],
+      wishList: [],
+    });
   }
 
   handleSignupOrLogin = async () => {
