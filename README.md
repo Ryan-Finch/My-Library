@@ -22,9 +22,9 @@ This Project was made using:
 
 Icebox/Future Steps
 <hr>
--Peer to peer communicatio via sockets for a bookclub <br>
+-Peer to peer communication via sockets for a bookclub <br>
 -Continue to build on sorting of book shelves and for video library<br>
 -Ability to re-name vidoes and add categories to create folders for content<br>
 -More refined search methods for both video and books<br>
--Ability to look at others libraries<br>
+-Ability to look at other libraries<br>
 -Suggestions based on what you have read<br>
