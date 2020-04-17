@@ -12,11 +12,8 @@ function CurrentlyReading(props) {
             <div className="curr-read-container">
             {props.library.map((book,idx)=>
                 book.currentlyReading ? 
-                <Link key={idx} to={{
-                    pathname:`/book-page/${book.bookId}`,
-                    }}>
-                <img src={book.cover} alt={book.title}></img>
-                </Link>
+    
+                <img src={book.cover} alt={book.title} onClick={props.handleClick} id={book.bookId} ></img>
                 :
                 null
             )} 

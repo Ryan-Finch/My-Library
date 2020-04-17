@@ -2,7 +2,9 @@ const VideoLibrary= require('../models/videoLibrary')
 
 module.exports={
     create,
-    index
+    index,
+    delete: deleteOne,
+    update
 }
 
 
@@ -27,6 +29,26 @@ async function create(req,res){
         const videoLibrary = await VideoLibrary.create(req.body)
 
         res.status(201).json(videoLibrary)
+    }catch(err){
+        res.status(500).json(err)
+    }
+}
+
+async function deleteOne(req,res){
+    console.log(req.params.id)
+    try{
+        const deletedVideo=await VideoLibrary.findByIdAndDelete(req.params.id)
+        res.status(200).json(deletedVideo)
+    }catch(err){
+        res.status(500).json(err)
+    }
+}
+
+async function update(req,res){
+
+    try{
+        const updatedVideo = await VideoLibrary.findByIdAndUpdate(req.params.id, req.body,{new:true})
+        res.status(200).json(updatedVideo)
     }catch(err){
         res.status(500).json(err)
     }

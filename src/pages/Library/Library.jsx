@@ -12,6 +12,8 @@ class Library extends Component{
     state={
         switchLibrary: "true",
         libraryBookInfo: [],
+        renamingVideo: '',
+        newVideoName: ''
     }
 
     async componentDidMount(){
@@ -23,7 +25,7 @@ class Library extends Component{
     }
 
     handleClick = async (e) =>{
-
+        console.log(e.target.id)
         const libraryBookInfo = await getOne(e.target.id)
         this.setState({
             ...this.state,
@@ -42,7 +44,7 @@ class Library extends Component{
         await this.props.seperateBooks(library, videoLibrary)
         await this.setState({
             ...this.state,
-            libraryBookInfo: updatedBook,
+            libraryBookInfo: [updatedBook],
         })
 
     }
@@ -59,7 +61,46 @@ class Library extends Component{
             switchLibrary: value
         })
     }
+////////////////////////////////////////
+/////////Video Library Methods
 
+    handleDeleteVideo=  e =>{
+
+        videoLibraryService.deleteOne(e.target.id);
+        this.props.refreshLibrary();
+    }
+
+    handleRenameClick= e =>{
+        console.log(e.target.id)
+        this.setState({
+            ...this.state,
+            renamingVideo: e.target.id
+        })
+    }
+
+    handleNameChange=e=>{
+
+        this.setState({
+            ...this.state,
+            newVideoName: e.target.value
+        })        
+    }
+
+    handleRenameSubmit= async e =>{
+    
+        const newName={
+            title: this.state.newVideoName
+        }
+         await videoLibraryService.update(newName,e.target.id)
+        this.props.refreshLibrary()
+        this.setState({
+            ...this.state,
+            renamingVideo: false,
+            newVideoName: ''
+        })
+    }
+//////////////////////////////////////////
+/////////////Render
     render(){
 
         return(
@@ -78,6 +119,11 @@ class Library extends Component{
                     :
                     <VideoLibrary 
                         videoLibrary={this.props.videoLibrary}
+                        handleDeleteVideo={this.handleDeleteVideo}
+                        handleRenameClick={this.handleRenameClick}
+                        renamingVideo={this.state.renamingVideo}
+                        handleRenameSubmit={this.handleRenameSubmit}
+                        handleNameChange={this.handleNameChange}
                     />
                 }
             </div>

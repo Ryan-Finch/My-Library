@@ -54,10 +54,13 @@ class App extends Component{
   }
 
   refreshLibrary = async () =>{
-    const library = await getAll()
+    let library = await getAll()
+    let videoLibrary= await videoLibraryService.getAll()
+
     this.setState({
       ...this.state,
-      library
+      library,
+      videoLibrary,
     })
   }
 /////////////////////////////////////////////////////////////////////////
@@ -69,11 +72,10 @@ class App extends Component{
   }
 
   handleSignupOrLogin = async () => {
-    const library = await getAll();
- 
+    this.refreshLibrary()
+
     this.setState({
       ...this.state,
-      library,
       user: userService.getUser()
     });
   }
@@ -182,6 +184,7 @@ handleVideoLibrarySubmit = e =>{
               ownedUnreadBooks={this.state.ownedUnreadBooks}
               wishList={this.state.wishList}
               videoLibrary={this.state.videoLibrary}
+              refreshLibrary={this.refreshLibrary}
             />
           }/>
 
@@ -207,12 +210,13 @@ handleVideoLibrarySubmit = e =>{
               getBooks={this.getBooks}
               getVideos={this.getVideos}
               searchTerm={this.state.searchTerm}
-              // videoSearchTerm={this.state.videoSearchTerm}
+              videoLibrary={this.state.videoLibrary}
               books={this.state.books}
               videos={this.state.videos}
               clearBookSearch={this.clearBookSearch}
               searchState={this.state.searchState}
               handleVideoLibrarySubmit={this.handleVideoLibrarySubmit}
+              refreshLibrary={this.refreshLibrary}
             />
           }/>
 

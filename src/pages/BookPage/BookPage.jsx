@@ -4,7 +4,6 @@ import AddLibraryBook from '../../components/AddLibraryBook/AddLibraryBook'
 import noBook from '../../images/no-book.png'
 import './BookPage.css'
 import UpdateBook from '../../components/UpdateBook/UpdateBook'
-// import {getAll} from '../../services/libraryService'
 
 class BookPage extends Component{
 
@@ -16,7 +15,7 @@ class BookPage extends Component{
     async componentDidMount(){
 
         if(!this.props.library.length){ 
-            this.props.refreshLibrary()
+            await this.props.refreshLibrary()
         }
         this.getBook(this.props.match.params.id)
     }
@@ -39,17 +38,12 @@ class BookPage extends Component{
 
       }
     
-    updateOwnedBook = async (id) =>{
-        await this.props.library.map(bk =>{
+    updateOwnedBook = (id) =>{
+        this.props.library.map(bk =>{
             if (bk.bookId === id){
                 return this.setState({
                     ...this.state,
                     bookOwned: [bk]
-                })
-            }else{
-                this.setState({
-                    ...this.state,
-                    bookOwned:[]
                 })
             }
         })

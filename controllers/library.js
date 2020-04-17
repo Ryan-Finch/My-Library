@@ -58,6 +58,7 @@ async function update(req,res){
 
 //Delete One
 async function deleteOne(req,res){
+    
     try{
         const deletedBook= await Library.findOneAndDelete({user:req.user._id, bookId: req.params.id});
         res.status(200).json(deletedBook)

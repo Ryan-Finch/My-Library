@@ -23,3 +23,25 @@ export function create(video, ){
         body: JSON.stringify(video)
     }).then(res => res.json());
 }
+
+export function deleteOne(id){
+    return fetch(BASE_URL+'/'+id,{
+        method: 'DELETE',
+        headers:{
+            'Authorization': `Bearer ${tokenService.getToken()}`
+        }
+    }).then(res=>res.json())
+}
+
+export function update(updatedInfo,id){
+
+    console.log(updatedInfo, id)
+    return fetch(BASE_URL+'/'+id,{
+        method:'PUT',
+        headers:{
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${tokenService.getToken()}`
+        },
+        body: JSON.stringify(updatedInfo) 
+    }).then(res=>res.json())
+}

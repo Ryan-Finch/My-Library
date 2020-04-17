@@ -1,5 +1,4 @@
 import React from 'react';
-import * as videoLibraryService from '../../services/videoLibraryService'
 
 function VideoSearchDisplay(props){
 
@@ -16,11 +15,20 @@ function VideoSearchDisplay(props){
                     
                     <div className="card-body">{video.snippet.title}</div>
                     <p className="card-text">{video.snippet.description}</p>
-                    <button onClick={props.handleVideoLibrarySubmit} id={video.id.videoId} name={video.snippet.title} value={video.snippet.description} className="btn btn-secondary">Add to Video Library</button>
+{/* 
+                    {props.videoLibrary.map((vl, idx) =>
+                        vl.videoId === video.id.videoId ?
+                        null    
+                        :
+                        idx === props.videoLibrary.length -1?  */}
+                            <button onClick={props.handleVideoLibrarySubmit} id={video.id.videoId} name={video.snippet.title} value={video.snippet.description} className="btn btn-secondary">Add to Video Library</button>
+                        {/* :
+                        null
+                        )
+                    } */}
                     </div>
-
-                
                 ) : null}
+
             </div>
         </div>
     )

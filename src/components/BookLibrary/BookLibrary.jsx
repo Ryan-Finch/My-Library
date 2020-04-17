@@ -16,6 +16,7 @@ function BookLibrary(props){
                     <div className="library-current">
                         <CurrentlyReading 
                             library={props.library}
+                            handleClick={props.handleClick}
                         />
                     </div>
 
@@ -45,6 +46,7 @@ function BookLibrary(props){
                         <LibraryBookInfo 
                             libraryBookInfo={props.libraryBookInfo}
                             handleCurrentlyReading={props.handleCurrentlyReading}
+                            
                         /> 
                     </div>
                 </div>

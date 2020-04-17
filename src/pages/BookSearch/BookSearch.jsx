@@ -1,7 +1,5 @@
-import React from 'react';
-import {Link} from "react-router-dom"
+import React, { useEffect } from 'react';
 import './BookSearch.css'
-import noBook from '../../images/no-book.png'
 import BookSearchBar from '../../components/BookSearchBar/BookSearchBar'
 import VideoSearchBar from '../../components/VideoSearchBar/VideoSearchBar'
 import BookSearchDisplay from '../../components/BookSearchDisplay/BookSearchDisplay';
@@ -10,7 +8,10 @@ import VideoSearchDisplay from '../../components/VideoSearchDisplay/VideoSearchD
 
 
 function BookSearch(props){
-    
+
+    useEffect(()=>{
+        props.refreshLibrary()
+    },[])
     const searchType = props.searchState === "Book" 
         ?
         <BookSearchBar 
@@ -34,6 +35,7 @@ function BookSearch(props){
         :
         <VideoSearchDisplay 
             {...props}
+            // videoLibrary={props.videoLibrary}
             handleVideoLibrarySubmit={props.handleVideoLibrarySubmit}
         />
 

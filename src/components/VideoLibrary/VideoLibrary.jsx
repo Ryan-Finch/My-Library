@@ -13,10 +13,15 @@ function VideoLibrary(props){
                             src={`https://www.youtube.com/embed/${video.videoId}`}>
                             </iframe>
 
-                    
-                    <div className="card-body">{video.title}</div>
-                    <p className="card-text">{video.description}</p>
-                    {/* <button onClick={props.handleVideoLibrarySubmit} id={video.id.videoId} name={video.snippet.title} value={video.snippet.description} className="btn btn-secondary">Add to Video Library</button> */}
+                    {props.renamingVideo === video._id ? 
+                        <div>
+                        <input className="card-body" onChange={props.handleNameChange}/><button className="btn btn-secondary" onClick={props.handleRenameSubmit}id={video._id}>Submit</button>
+                        </div>
+                        :
+                        <div className="card-body">{video.title}</div>  
+                    }
+                    <button onClick={props.handleDeleteVideo} className="btn btn-secondary" id={video._id}>Delete Video</button>
+                    <button onClick={props.handleRenameClick} className="btn btn-secondary" id={video._id} value="true">Rename Video</button>
                     </div>
 
                 
