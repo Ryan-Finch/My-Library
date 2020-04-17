@@ -79,7 +79,8 @@ class BookPage extends Component{
                             }}></div>
                     </div>
                     <div className="book-page-image">
-                        <img src={!bk.volumeInfo.imageLinks ? noBook : bk.volumeInfo.imageLinks.small ? bk.volumeInfo.imageLinks.small : bk.volumeInfo.imageLinks.thumbnail} alt={bk.volumeInfo.title}/>
+                    {/* //////////////////////////////////////////////////////////////////////Picture image issues here//////Check back to see if you can update image picutre to better /////////quality later */}
+                        <img src={!bk.volumeInfo.imageLinks ? noBook : bk.volumeInfo.imageLinks.small ? bk.volumeInfo.imageLinks.thumbnail : bk.volumeInfo.imageLinks.thumbnail} alt={bk.volumeInfo.title}/>
 
 
                     {!this.state.bookOwned.length ?

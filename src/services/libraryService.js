@@ -37,7 +37,9 @@ export function create(book, data){
         title: book[0].volumeInfo.title,
         authors: book[0].volumeInfo.authors,
         descriptions: book[0].volumeInfo.descriptions,
-        cover: book[0].volumeInfo.imageLinks.small ? book[0].volumeInfo.imageLinks.small : book[0].volumeInfo.imageLinks.thumbnail,
+        // //////////////////////////////////////////////////////////////////
+        /////////////////////////////check image issue here-switch thumbnail back to small/medium
+        cover: book[0].volumeInfo.imageLinks.small ? book[0].volumeInfo.imageLinks.thumbnail : book[0].volumeInfo.imageLinks.thumbnail,
         bookId: book[0].id,
         owned: data.owned,
         read:data.read
