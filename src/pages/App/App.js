@@ -34,7 +34,7 @@ class App extends Component{
 
 //////////////////////////////////////////////////////////////////////////
 ////////////////////////Library Books Update
-  seperateBooks = (library) =>{
+  seperateBooks = (library, videoLibrary) =>{
     const ownedReadBooksCopy = []
     const ownedUnreadBooksCopy = []
     const wishListCopy = []
@@ -46,6 +46,7 @@ class App extends Component{
     this.setState({
         ...this.state,
         library,
+        videoLibrary,
         ownedReadBooks:  ownedReadBooksCopy,
         ownedUnreadBooks: ownedUnreadBooksCopy,
         wishList: wishListCopy
@@ -180,6 +181,7 @@ handleVideoLibrarySubmit = e =>{
               ownedReadBooks={this.state.ownedReadBooks}
               ownedUnreadBooks={this.state.ownedUnreadBooks}
               wishList={this.state.wishList}
+              videoLibrary={this.state.videoLibrary}
             />
           }/>
 

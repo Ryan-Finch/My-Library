@@ -1,6 +1,16 @@
 import tokenService from './tokenService'
+import fetch from 'node-fetch';
 
 const BASE_URL ='/api/video'
+
+
+export function getAll(){
+    return fetch(BASE_URL,{
+        headers:{
+            'Authorization': `Bearer ${tokenService.getToken()}`
+        }
+    }).then(res => res.json());
+}
 
 export function create(video, ){
 

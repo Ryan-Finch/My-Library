@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
 import {getAll, getOne, update} from '../../services/libraryService'
 import './Library.css'
-// import noBook from '../../images/no-book.png'
-import OwnedReadBookShelf from '../../components/OwnedReadBookShelf/OwnedReadBookShelf';
-import OwnedUnreadBookShelf from '../../components/OwnedUnreadBooks/OwnedUnreadBooks';
-import WishList from '../../components/WishList/WishList';
-import LibraryBookInfo from '../../components/LibraryBookInfo/LirbaryBookInfo';
-import CurrentlyReading from '../../components/CurrentlyReading/CurrentlyReading';
+import * as videoLibraryService from '../../services/videoLibraryService'
+import BookLibrary from '../../components/BookLibrary/BookLibrary'
+import VideoLibrary from '../../components/VideoLibrary/VideoLibrary'
 
 
 
 class Library extends Component{
 
     state={
+        switchLibrary: "true",
         libraryBookInfo: [],
     }
 
     async componentDidMount(){
 
         const library = await getAll();
-        this.props.seperateBooks(library)
+        const videoLibrary = await videoLibraryService.getAll();
+        this.props.seperateBooks(library, videoLibrary)
 
     }
 
@@ -39,56 +38,48 @@ class Library extends Component{
 
         const updatedBook = await update(currentlyReading,e.target.id)
         const library = await getAll();
-        await this.props.seperateBooks(library)
+        const videoLibrary = await videoLibraryService.getAll();
+        await this.props.seperateBooks(library, videoLibrary)
         await this.setState({
             ...this.state,
             libraryBookInfo: updatedBook,
         })
 
     }
+    handleLibrarySwitch=(e)=>{
+        let value = e.target.value;
+
+        value === "true" ? 
+            value = "false" 
+            : 
+            value = "true"
+  
+        this.setState({
+            ...this.state,
+            switchLibrary: value
+        })
+    }
 
     render(){
 
         return(
             <div >
-                <div className="library-container">
-
-                    <div className="library-curr-read">
-                        <div className="library-current">
-                            <CurrentlyReading 
-                                library={this.props.library}
-                            />
-                        </div>
-
-                    </div>
-
-                    <div className="library-shelves">
-                            <h1>Library</h1>
-                            <OwnedReadBookShelf 
-                                handleClick={this.handleClick}
-                                ownedReadBooks={this.props.ownedReadBooks}
-                            />
-                            <OwnedUnreadBookShelf
-                                handleClick={this.handleClick} 
-                                ownedUnreadBooks={this.props.ownedUnreadBooks}
-                            />
-                            <WishList 
-                                handleClick={this.handleClick}
-                                wishList={this.props.wishList}
-                            />
-                    </div>    
-
-                    <div className="library-info">
-                        <div className="library-book-info">
-                            <LibraryBookInfo 
-                                libraryBookInfo={this.state.libraryBookInfo}
-                                handleCurrentlyReading={this.handleCurrentlyReading}
-                            /> 
-                        </div>
-                    </div>
-
-                </div>
-
+                <button onClick={this.handleLibrarySwitch} className="btn btn-secondary" value={this.state.switchLibrary}>Switch Libraries</button>
+                {this.state.switchLibrary === "true" ?
+                    <BookLibrary
+                        library={this.props.library} 
+                        ownedReadBooks={this.props.ownedReadBooks}
+                        ownedUnreadBooks={this.props.ownedUnreadBooks}
+                        handleClick={this.handleClick}
+                        wishList={this.props.wishList}
+                        libraryBookInfo={this.state.libraryBookInfo}
+                        handleCurrentlyReading={this.handleCurrentlyReading}
+                    />
+                    :
+                    <VideoLibrary 
+                        videoLibrary={this.props.videoLibrary}
+                    />
+                }
             </div>
         )
     }
