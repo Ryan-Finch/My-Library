@@ -13,7 +13,12 @@ function CurrentlyReading(props) {
             {props.library.map((book,idx)=>
                 book.currentlyReading ? 
     
-                <img src={book.cover} alt={book.title} onClick={props.handleClick} id={book.bookId} key={idx} ></img>
+                <img 
+                src={book.cover} 
+                alt={book.title} 
+                onClick={props.handleClick} 
+                id={book.bookId} 
+                key={idx} ></img>
                 :
                 null
             )} 

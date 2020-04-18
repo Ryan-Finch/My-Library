@@ -25,7 +25,7 @@ class Library extends Component{
     }
 
     handleClick = async (e) =>{
-        console.log(e.target.id)
+
         const libraryBookInfo = await getOne(e.target.id)
         this.setState({
             ...this.state,
@@ -38,10 +38,11 @@ class Library extends Component{
             currentlyReading: e.target.value
         }
 
-        const updatedBook = await update(currentlyReading,e.target.id)
+        const updatedBook = await update(currentlyReading, e.target.id)
         const library = await getAll();
         const videoLibrary = await videoLibraryService.getAll();
         await this.props.seperateBooks(library, videoLibrary)
+        console.log(updatedBook)
         await this.setState({
             ...this.state,
             libraryBookInfo: [updatedBook],

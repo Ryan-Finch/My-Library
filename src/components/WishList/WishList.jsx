@@ -7,13 +7,13 @@ function WishList(props){
     const shelf = props.wishList ?  props.wishList.map((book, idx) =>
         <div
             key={idx} 
-            onClick={props.handleClick} className="owned-read-book"
+            onClick={props.handleClick} className="wish-list-book"
             id={book.bookId}
             data-toggle="tooltip" 
             data-placement="right" 
             title={book.title}
         >
-        {book.title}    
+        <p className="book-text" id={book.bookId}>{book.title}</p>   
         </div>
         )
         :

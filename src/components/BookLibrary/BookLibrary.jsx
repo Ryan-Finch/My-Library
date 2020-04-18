@@ -24,24 +24,22 @@ function BookLibrary(props){
 
                 <div className="library-shelves">
                         <h1>Book Library</h1>
-                        <h3>Books You Have Read</h3>
+                        <h3>Read Shelf</h3>
                         <OwnedReadBookShelf 
                             handleClick={props.handleClick}
                             ownedReadBooks={props.ownedReadBooks}
                         />
-                        <h3>Books You Need To Read</h3>
+                        <h3>Unread Shelf</h3>
                         <OwnedUnreadBookShelf
                             handleClick={props.handleClick} 
                             ownedUnreadBooks={props.ownedUnreadBooks}
                         />
-                        <h3>Books You Want To Own and Read</h3>
+                        <h3>Wishlist Shelf</h3>
                         <WishList 
                             handleClick={props.handleClick}
                             wishList={props.wishList}
                         />
                 </div>    
-
-                <div className="library-info">
                     <div className="library-book-info">
                         <LibraryBookInfo 
                             libraryBookInfo={props.libraryBookInfo}
@@ -49,8 +47,6 @@ function BookLibrary(props){
                             
                         /> 
                     </div>
-                </div>
-
             </div>
         </>
     )

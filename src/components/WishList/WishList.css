@@ -1,17 +1,36 @@
 .wish-list-container{
-    border: 1px solid black;
-    background-color:black;
-    height: 10vw;
-    width: 40vw;
+    border: 4px inset black;
+    width: 46.8vw;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    align-content: center;
+    margin-bottom: 30px;
 }
 .wish-list-book{
-    height: 100%;
-    width: 1.5vw;
-    background-color: blue;
+    height: 25vh;
+    width: 1.8vw;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(79,120,95,1) 49%, rgba(2,0,36,1) 100%);
     writing-mode: tb-rl;
     border: 1px solid black;
     overflow: hidden;
-    margin: 0 1px;
-    color: black;
+    margin: 0 .5px;
+    color: papayawhip;
+    text-shadow: none;
+    font-weight: bolder;
+    border-radius: 10%;
+    cursor: grab;
+}
+.book-text{
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+@media only screen and (max-width: 768px) {
+    .wish-list-container{
+        width: 90vw;
+    }
+    .wish-list-book{
+        width: 7vw;
+    }
 }

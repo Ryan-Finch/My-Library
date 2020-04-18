@@ -11,7 +11,9 @@ function OwnedUnreadBookShelf(props){
         data-toggle="tooltip" 
         data-placement="right" 
         title={book.title}
-        >{book.title}</div>
+        >
+        <p className="book-text" id={book.bookId}>{book.title}</p>
+        </div>
        ) 
        :
        null

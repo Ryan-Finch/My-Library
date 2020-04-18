@@ -7,7 +7,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     height: 100vh;
-    justify-content: flex-end;
+    justify-content: space-around;
 }
 .libray-profile{
     grid-column: 2/2;
@@ -18,18 +18,37 @@
     display: flex;
     flex-direction: column;
     text-align: -webkit-center;
+    border: 6px solid black;
+    margin-top: 20px;
+    background-image: url('../../images/bookshelf10.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
-.linrary-curr-read{
-    flex-basis: 25%;
+.library-curr-read{
     display: flex;
     flex-direction: column;
 }
-.library-info{
+.library-book-info{
     display: flex;
-    flex-basis: 25%;
     flex-direction: column;
+    margin-right: 50px;
+}
+.library-book-info h1{
+    border-bottom: 2px solid peru;
 }
 .library-page-container button{
     border: 1px solid peru;
     margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    .library-shelves{
+        flex-basis: 100%;
+        border: 6px 0;
+        order: -1;
+    }
+    .library-curr-read{
+        order: 2;
+    }
 }

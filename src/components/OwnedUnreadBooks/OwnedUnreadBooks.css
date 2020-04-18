@@ -1,17 +1,34 @@
 .owned-unread-container{
-    border: 1px solid black;
-    background-color: green;
-    height: 10vw;
-    width: 40vw;
+    border: 4px inset black;
+    width: 46.8vw;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
 }
 .owned-unread-book{
-    height: 100%;
-    width: 1.5vw;
-    background-color: blue;
+    height: 25vh;
+    width: 1.8vw;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(165,60,15,1) 50%, rgba(2,0,36,1) 100%);
     writing-mode: tb-rl;
     border: 1px solid black;
     overflow: hidden;
-    margin: 0 1px;
-    color: black;
+    color: navajowhite;
+    text-shadow: none;
+    font-weight: bolder;
+    border-radius: 10%;
+    cursor: grab;
+}
+.book-text{
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+@media only screen and (max-width: 768px) {
+    .owned-unread-container{
+        width: 90vw;
+    }
+    .owned-unread-book{
+        width: 7vw;
+    }
 }
