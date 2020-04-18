@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as libraryService from '../../services/libraryService'
 import {Link} from 'react-router-dom'
-
+import './UpdateBook.css'
 
 class UpdateBook extends Component{
 
@@ -98,8 +98,8 @@ class UpdateBook extends Component{
                 }
                 </form>
 
-                <button onClick={this.handleDeleteSubmit} className="btn btn-secondary" type="submit">Delete from Library</button>
-                <Link to='/library' className="btn btn-secondary">Your Library</Link>
+                <button onClick={this.handleDeleteSubmit} className="btn btn-secondary update-button" type="submit">Delete from Library</button>
+                <Link to='/library' className="btn btn-secondary update-button">Go To Your Library</Link>
             </div>
             </>
         )

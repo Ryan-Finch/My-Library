@@ -1,12 +1,21 @@
+.book-page-container{
+  margin-top: 50px;
+}
 .book-page-info {
   display: flex;
   flex-direction: row;
+  width: 75vw;
+  margin: auto;
   flex-wrap: wrap;
   padding: 20px;
-  align-items: felx-star;
+  justify-content: center;
 }
 .book-page-book {
   flex-basis: 50%;
+
+  border-style: outset;
+  border-color: peru;
+  background-color: rgba(112,122,148, .8)
 }
 .book-page-image {
   margin-top: 50px;
@@ -14,9 +23,19 @@
   height: 50%;
 }
 .book-page-image img{
-    width: 16rem;
-    height: 25rem;
-    border: .5px black solid;
-    border-left: 0;
-    box-shadow: 2px 2px black;
-  }
+  width: 16rem;
+  height: 25rem;
+  border: .5px black solid;
+  border-left: 0;
+  box-shadow: 2px 2px black;
+}
+@media only screen and (max-width: 768px) {
+.book-page-book{
+  flex-basis: 100%;
+}
+.book-page-info{
+  width: 90vw;
+
+  padding:0;
+}
+}

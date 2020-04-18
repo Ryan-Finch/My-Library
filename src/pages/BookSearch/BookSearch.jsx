@@ -42,14 +42,14 @@ function BookSearch(props){
 
 
     return(
-        <div className='styles.container'>
+        <div className='book-search-menu'>
 
-            <div>
+            <div className="book-search-content">
                 <div>
-                    <label>Book
+                    <label>Search For |  Books
                         <input onChange={props.handleSwitch} type='radio' name="video-book-switch" checked={props.searchState === "Book"} value="Book" />
                     </label>
-                    <label>Video
+                    <label>Videos
                         <input onChange={props.handleSwitch} type='radio' name="video-book-switch" checked={props.searchState === "Video"} value="Video" />
                     </label>
                 </div>

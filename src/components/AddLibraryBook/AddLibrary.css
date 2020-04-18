@@ -11,14 +11,11 @@
     width: 8rem;
     height: 3rem;
     font-size: .8rem;
-    border: 1px solid black;
+    border: 1px solid peru;
 }
 .add-library-form-container form div{
     display: flex;
     flex-direction: column;
-}
-.add-library-form-container form label select{
-    margin: 0 10px;
 }
 .add-library-form-container form label{
     width: 100%;
@@ -27,5 +24,6 @@
 }
 .add-library-form-container form label select{
     align-self: self-start;
-    border: 1px solid black;
+    border: 1px solid peru;
+    margin: 0 10px;
 }

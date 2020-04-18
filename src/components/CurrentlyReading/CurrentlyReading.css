@@ -1,4 +1,11 @@
 .curr-read-container{
     display: flex;
     flex-direction: column;
+    text-align: -webkit-center;
+}
+.curr-read-container img{
+    margin: 20px;
+}
+.curr-read-h1{
+    border-bottom: 2px solid peru;
 }

@@ -8,7 +8,12 @@ function WishList(props){
         <div
             key={idx} 
             onClick={props.handleClick} className="owned-read-book"
-            id={book.bookId}>{book.title}
+            id={book.bookId}
+            data-toggle="tooltip" 
+            data-placement="right" 
+            title={book.title}
+        >
+        {book.title}    
         </div>
         )
         :

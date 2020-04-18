@@ -1,9 +1,13 @@
+.library-page-container{
+    margin-top: 50px;
 
+}
 .library-container{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     height: 100vh;
-    justify-content: center;
+    justify-content: flex-end;
 }
 .libray-profile{
     grid-column: 2/2;
@@ -24,4 +28,8 @@
     display: flex;
     flex-basis: 25%;
     flex-direction: column;
+}
+.library-page-container button{
+    border: 1px solid peru;
+    margin-bottom: 10px;
 }

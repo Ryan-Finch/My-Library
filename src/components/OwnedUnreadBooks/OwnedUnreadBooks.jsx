@@ -8,6 +8,9 @@ function OwnedUnreadBookShelf(props){
         key={idx} 
         onClick={props.handleClick} className="owned-unread-book"
         id={book.bookId}
+        data-toggle="tooltip" 
+        data-placement="right" 
+        title={book.title}
         >{book.title}</div>
        ) 
        :

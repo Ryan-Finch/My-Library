@@ -1,15 +1,18 @@
-
-.signup-container{
+.login-container{
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-row: auto;
     grid-template-areas:
-    ". . . ."
+    ". title title ."
     ". content content ."
     ". content content ."
     ;
 }
-.signup-content{
+.login-content{
     grid-area: content;
+}
+.login-title{
+    grid-area: title;
+    align-self: self-end;
 }

@@ -104,7 +104,7 @@ class Library extends Component{
     render(){
 
         return(
-            <div >
+            <div className="library-page-container">
                 <button onClick={this.handleLibrarySwitch} className="btn btn-secondary" value={this.state.switchLibrary}>Switch Libraries</button>
                 {this.state.switchLibrary === "true" ?
                     <BookLibrary

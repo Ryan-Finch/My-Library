@@ -1,10 +1,11 @@
 import React from 'react';
+import "./VideoSearchDisplay.css"
 
 function VideoSearchDisplay(props){
 
     return(
         <div>
-               <div className="book-search-container">
+               <div className="video-search-container">
                 {props.videos ? props.videos.map((video,idx) =>
                     <div className="card" style={{width: '26.5rem'}} key={idx}>
 
@@ -14,7 +15,6 @@ function VideoSearchDisplay(props){
 
                     
                     <div className="card-body">{video.snippet.title}</div>
-                    <p className="card-text">{video.snippet.description}</p>
 {/* 
                     {props.videoLibrary.map((vl, idx) =>
                         vl.videoId === video.id.videoId ?

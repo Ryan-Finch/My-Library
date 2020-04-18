@@ -6,7 +6,7 @@ function Header(props){
 
     let header = props.user ?  
     <nav className="navbar header">
-        <h1 className="navbar-brand">{props.user.name}'s Library</h1>
+        <h1 className="">{props.user.name}'s Library</h1>
         <div>
             <Link to='/books'>Search</Link>&nbsp;&nbsp; | &nbsp;&nbsp;
             <Link to='/library'>Library</Link>&nbsp;&nbsp; | &nbsp;&nbsp;
@@ -16,7 +16,7 @@ function Header(props){
     </nav>
     :
     <nav className="navbar header">
-    <h1 className="navbar-brand">My Library</h1>
+    <h1 className="">My Library</h1>
         <div>
             <Link to='/'>About</Link>&nbsp;&nbsp; | &nbsp;&nbsp;
             <Link to="/login">Login</Link>&nbsp;&nbsp; | &nbsp;&nbsp;

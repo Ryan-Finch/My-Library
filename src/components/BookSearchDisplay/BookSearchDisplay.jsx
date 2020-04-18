@@ -16,6 +16,7 @@ function BookSearchDisplay(props){
                         className="book-search-img rounded-right" 
                         src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : noBook}
                         alt={book.title}
+                        data-toggle="tooltip" data-placement="right" title={book.volumeInfo.title}
                     />
                 
                     </Link> 
