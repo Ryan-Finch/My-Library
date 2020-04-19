@@ -9,12 +9,14 @@
     width: 25rem;
     margin: 50px 50px;
     color: black;
+    height: 40vh;
+
 }
 .video-search-card-body{
     color: white;
-    height: 10vh;
+    height: 9vh;
     border: 2px solid peru;
-    background-color: rgba(112,122,148, .8);
+    background: rgba(103,40,5, .8); 
 }
 
 @media only screen and (max-width: 768px) {

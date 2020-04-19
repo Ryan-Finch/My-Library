@@ -11,7 +11,7 @@
   grid-area: content;
   border-style: outset;
   border-color: peru;
-  background-color: rgba(112, 122, 148, 0.8);
+  background: rgba(103,40,5, .8); 
 }
 .about-title {
   grid-area: title;
