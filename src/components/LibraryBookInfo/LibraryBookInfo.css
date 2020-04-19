@@ -8,3 +8,12 @@ img{
 h3{
     margin: 10px;
 }
+.library-book-info-container{
+    width: 17.5vw;
+}
+
+@media only screen and (max-width: 768px) {
+    .library-book-info-container{
+        width: 75vw;
+    }
+}

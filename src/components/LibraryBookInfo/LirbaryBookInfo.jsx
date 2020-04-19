@@ -8,7 +8,7 @@ function LibraryBookInfo(props){
     const showBook = props.libraryBookInfo.length ? 
     props.libraryBookInfo.map((bk,idx)=>
     
-        <div key={idx}>
+        <div key={idx} className="library-book-info-container">
             <h1>Book Info</h1>
             <hr></hr>
             <h3>{bk.title}</h3>
@@ -26,7 +26,7 @@ function LibraryBookInfo(props){
         
         )
         :
-        <div>
+        <div className="library-book-info-container">
             <h1>Book Info</h1>
             <hr></hr>
         </div>

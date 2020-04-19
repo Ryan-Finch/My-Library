@@ -7,14 +7,14 @@ function VideoSearchDisplay(props){
         <div>
                <div className="video-search-container">
                 {props.videos ? props.videos.map((video,idx) =>
-                    <div className="card" style={{width: '26.5rem'}} key={idx}>
+                    <div className="card video-search-card" style={{width: '26.5rem'}} key={idx}>
 
-                            <iframe width="420" height="315"
+                            <iframe className="video-search-iframe"
                             src={`https://www.youtube.com/embed/${video.id.videoId}`}>
                             </iframe>
 
                     
-                    <div className="card-body">{video.snippet.title}</div>
+                    <div className="card-body video-search-card-body">{video.snippet.title}</div>
 {/* 
                     {props.videoLibrary.map((vl, idx) =>
                         vl.videoId === video.id.videoId ?

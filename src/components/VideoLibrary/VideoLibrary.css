@@ -1,16 +1,16 @@
-.video-search-iframe{
+.video-library-iframe{
     width: 100%;
     height: 40vh;
 }
-
-.video-search-card{
+.video-libary-h1{
+    margin-top: 20px;
+}
+.video-library-card{
     background-color: inherit;
     text-shadow: none;
     width: 25rem;
-    margin: 50px 50px;
-    color: black;
 }
-.video-search-card-body{
+.video-library-card-body{
     color: white;
     height: 10vh;
     border: 2px solid peru;
@@ -19,7 +19,7 @@
 
 @media only screen and (max-width: 768px) {
 
-    .video-search-card{
+    .video-library-card{
         width: 80vw;
         margin:  20px auto;
     }

@@ -51,4 +51,7 @@
     .library-curr-read{
         order: 2;
     }
+    .library-book-info{
+        margin: auto;
+    }
 }
