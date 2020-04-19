@@ -187,7 +187,9 @@ handleVideoLibrarySubmit = e =>{
       
 {/*Route To Library Page  */}
           <Route path="/library" render={props =>
+
             <Library 
+          
               {...props}
               library={this.state.library}
               user={this.state.user}
@@ -198,6 +200,7 @@ handleVideoLibrarySubmit = e =>{
               videoLibrary={this.state.videoLibrary}
               refreshLibrary={this.refreshLibrary}
             />
+
           }/>
 
 
