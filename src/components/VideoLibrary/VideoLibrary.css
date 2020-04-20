@@ -9,12 +9,12 @@
     background-color: inherit;
     text-shadow: none;
     width: 25rem;
-    margin: 35px;
+    margin: 50px 50px;
     height: 40vh;
 }
 .video-library-card-body{
     color: white;
-    height: 9vh;
+    height: 10vh;
     border: 2px solid peru;
     background: rgba(103,40,5, .8); 
 }

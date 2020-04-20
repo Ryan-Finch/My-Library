@@ -12,6 +12,7 @@ function BookSearch(props){
     useEffect(()=>{
         props.refreshLibrary()
     },[])
+    
     const searchType = props.searchState === "Book" 
         ?
         <BookSearchBar 
@@ -35,7 +36,6 @@ function BookSearch(props){
         :
         <VideoSearchDisplay 
             {...props}
-            // videoLibrary={props.videoLibrary}
             handleVideoLibrarySubmit={props.handleVideoLibrarySubmit}
         />
 
@@ -59,8 +59,6 @@ function BookSearch(props){
                 </div>
 
             </div>
-
-
             <div>
                 {searchTypeDisplay}
             </div>

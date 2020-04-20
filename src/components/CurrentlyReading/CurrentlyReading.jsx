@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
 import './CurrentlyReading.css'
 
 function CurrentlyReading(props) {
@@ -8,7 +7,7 @@ function CurrentlyReading(props) {
     return(
         <>
         <div>
-        <h1 className="curr-read-h1">Currently Reading</h1>
+            <h1 className="curr-read-h1">Currently Reading</h1>
             <div className="curr-read-container">
             {props.library.map((book,idx)=>
                 book.currentlyReading ? 

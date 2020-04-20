@@ -5,8 +5,8 @@ function VideoSearch(props){
         <>
             <div>
                 <form className="search-books-form" onSubmit={props.handleVideoSubmit}>
-                <input onChange={props.handleChange} value={props.VideoSearchTerm}></input>
-                <button type="submit" className="btn btn-secondary" >Submit</button>
+                    <input onChange={props.handleChange} value={props.VideoSearchTerm}></input>
+                    <button type="submit" className="btn btn-secondary" >Submit</button>
                 </form>
             </div>
         </>

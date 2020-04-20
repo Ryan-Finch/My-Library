@@ -1,5 +1,6 @@
 // import userService from './userService'
 import tokenService from './tokenService'
+import noBook from '../images/no-book.png' 
 
 const BASE_URL= '/api/library'
 
@@ -36,10 +37,13 @@ export function create(book, data){
     const library = {
         title: book[0].volumeInfo.title,
         authors: book[0].volumeInfo.authors,
-        descriptions: book[0].volumeInfo.descriptions,
+        description: book[0].volumeInfo.description,
         // //////////////////////////////////////////////////////////////////
         /////////////////////////////check image issue here-switch thumbnail back to small/medium
-        cover: book[0].volumeInfo.imageLinks.small ? book[0].volumeInfo.imageLinks.thumbnail : book[0].volumeInfo.imageLinks.thumbnail,
+        cover: book[0].volumeInfo.imageLinks ?  
+            book[0].volumeInfo.imageLinks.small ? book[0].volumeInfo.imageLinks.thumbnail : book[0].volumeInfo.imageLinks.thumbnail
+            :
+            noBook,
         bookId: book[0].id,
         owned: data.owned,
         read:data.read

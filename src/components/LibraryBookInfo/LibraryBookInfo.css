@@ -11,7 +11,21 @@ h3{
 .library-book-info-container{
     width: 17.5vw;
 }
-
+.modal-button{
+    border: 1px solid peru;
+}
+.modal-book-info{
+    text-shadow: none;
+    border-style: outset;
+    border-color: peru;
+    background: rgba(103,40,5, .8);
+    color: white;
+}
+.modal-title{
+    font-family: 'Berkshire Swash';
+    color: peru;
+    text-shadow: 1px 1px black;
+}
 @media only screen and (max-width: 768px) {
     .library-book-info-container{
         width: 75vw;

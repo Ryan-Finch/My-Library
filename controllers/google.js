@@ -12,7 +12,6 @@ module.exports={
 }
 
 async function getKey(req,res){
-    console.log(API_URL + req.params.term +MANY_KEY + order + pagination)
     try{
         const searchResults = await fetch(API_URL + req.params.term +MANY_KEY + order + pagination).then(res => res.json())
 

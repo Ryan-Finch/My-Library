@@ -20,4 +20,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
+h1{
+  font-family: 'Berkshire Swash';
+  color: peru;
+  text-shadow: 1px 1px white;
+}

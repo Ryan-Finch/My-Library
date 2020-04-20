@@ -3,7 +3,7 @@
     width: 46.8vw;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
     align-content: center;
 }
 .owned-unread-book{

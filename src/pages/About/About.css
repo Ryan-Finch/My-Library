@@ -17,7 +17,11 @@
   grid-area: title;
   align-self: self-end;
 }
-
+span{
+  font-family: 'Berkshire Swash';
+  color: peru;
+  text-shadow: 1px 1px black;
+}
 @media only screen and (max-width: 768px) {
   .about-container {
     grid-template-areas:

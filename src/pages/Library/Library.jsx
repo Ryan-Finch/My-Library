@@ -42,7 +42,7 @@ class Library extends Component{
         const library = await getAll();
         const videoLibrary = await videoLibraryService.getAll();
         await this.props.seperateBooks(library, videoLibrary)
-        console.log(updatedBook)
+
         await this.setState({
             ...this.state,
             libraryBookInfo: [updatedBook],
@@ -72,7 +72,7 @@ class Library extends Component{
     }
 
     handleRenameClick= e =>{
-        console.log(e.target.id)
+
         this.setState({
             ...this.state,
             renamingVideo: e.target.id
@@ -110,6 +110,7 @@ class Library extends Component{
                 {this.state.switchLibrary === "true" ?
                     <BookLibrary
                         library={this.props.library} 
+                        refreshLibrary={this.props.refreshLibrary}
                         ownedReadBooks={this.props.ownedReadBooks}
                         ownedUnreadBooks={this.props.ownedUnreadBooks}
                         handleClick={this.handleClick}

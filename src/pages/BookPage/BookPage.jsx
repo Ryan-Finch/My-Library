@@ -60,42 +60,44 @@ class BookPage extends Component{
         return(
             <>
             <div className="book-page-container">
-                <div >
-                {this.state.book.map(bk=> 
-                <div className="book-page-info" key={bk.id}>
-                    <div className="book-page-book" >
-                        <h1>{bk.volumeInfo.title}</h1>
-                        <hr></hr>
-                        <h4>{bk.volumeInfo.authors}</h4>
-                        <br></br>
-                        <div dangerouslySetInnerHTML={{__html: 
-                        `${bk.volumeInfo.description}` ? `${bk.volumeInfo.description}` : 'No Details Known'
-                            }}></div>
-                    </div>
-                    <div className="book-page-image">
-                    {/* //////////////////////////////////////////////////////////////////////Picture image issues here//////Check back to see if you can update image picutre to better /////////quality later */}
-                        <img src={!bk.volumeInfo.imageLinks ? noBook : bk.volumeInfo.imageLinks.small ? bk.volumeInfo.imageLinks.thumbnail : bk.volumeInfo.imageLinks.thumbnail} alt={bk.volumeInfo.title}/>
+                <div>
+                    {this.state.book.map(bk=> 
+                    <div className="book-page-info" key={bk.id}>
+                        <div className="book-page-book" >
+                            <h1>{bk.volumeInfo.title}</h1>
+                            <hr></hr>
+                            <h4>{bk.volumeInfo.authors}</h4>
+                            <br></br>
+                            <div dangerouslySetInnerHTML={{__html: 
+                            `${bk.volumeInfo.description}` ? `${bk.volumeInfo.description}` : 'No Details Known'
+                                }}></div>
+                        </div>
+                        <div className="book-page-image">
+
+                            <img 
+                                src={!bk.volumeInfo.imageLinks ? noBook : bk.volumeInfo.imageLinks.small ? bk.volumeInfo.imageLinks.thumbnail : bk.volumeInfo.imageLinks.thumbnail} alt={bk.volumeInfo.title}
+                            />
 
 
-                    {!this.state.bookOwned.length ?
-                        <AddLibraryBook 
-                            {...this.props}
-                            book={this.state.book}
-                            refreshLibrary={this.props.refreshLibrary}
-                            updateOwnedBook={this.updateOwnedBook}
-                        />
-                        :
-                        <UpdateBook 
-                            {...this.props}
-                            book={this.state.book}
-                            bookOwned={this.state.bookOwned}
-                            refreshLibrary={this.props.refreshLibrary}
-                            updateOwnedBook={this.updateOwnedBook}
-                            deleteOwnedBook={this.deleteOwnedBook}
-                        />
-                    }
+                        {!this.state.bookOwned.length ?
+                            <AddLibraryBook 
+                                {...this.props}
+                                book={this.state.book}
+                                refreshLibrary={this.props.refreshLibrary}
+                                updateOwnedBook={this.updateOwnedBook}
+                            />
+                            :
+                            <UpdateBook 
+                                {...this.props}
+                                book={this.state.book}
+                                bookOwned={this.state.bookOwned}
+                                refreshLibrary={this.props.refreshLibrary}
+                                updateOwnedBook={this.updateOwnedBook}
+                                deleteOwnedBook={this.deleteOwnedBook}
+                            />
+                        }
+                        </div>
                     </div>
-                </div>
                 )}
                 </div>
               

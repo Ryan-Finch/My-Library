@@ -35,7 +35,6 @@ async function create(req,res){
 }
 
 async function deleteOne(req,res){
-    console.log(req.params.id)
     try{
         const deletedVideo=await VideoLibrary.findByIdAndDelete(req.params.id)
         res.status(200).json(deletedVideo)

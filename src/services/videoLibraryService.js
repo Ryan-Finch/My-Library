@@ -35,7 +35,6 @@ export function deleteOne(id){
 
 export function update(updatedInfo,id){
 
-    console.log(updatedInfo, id)
     return fetch(BASE_URL+'/'+id,{
         method:'PUT',
         headers:{

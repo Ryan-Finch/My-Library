@@ -91,8 +91,7 @@ class UpdateBook extends Component{
                 {this.props.bookOwned[0] && this.props.bookOwned[0].owned && this.props.bookOwned[0].read ? 
                     null
                     :
-                    <button className="btn btn-secondary" type="submit" >
-                    {/* disabled={this.state.invalidForm} */}
+                    <button className="btn btn-secondary update-form-button" type="submit" >
                     {this.state.formData.owned ? 'Update Library' : 'Add To Library'}
                     </button>
                 }

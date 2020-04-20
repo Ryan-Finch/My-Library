@@ -44,7 +44,9 @@ function BookLibrary(props){
                         <LibraryBookInfo 
                             libraryBookInfo={props.libraryBookInfo}
                             handleCurrentlyReading={props.handleCurrentlyReading}
-                            
+                            refreshLibrary={props.refreshLibrary}
+                            library={props.library}
+                            handleLibraryBookInfoUpdate={props.handleLibraryBookInfoUpdate}
                         /> 
                     </div>
             </div>

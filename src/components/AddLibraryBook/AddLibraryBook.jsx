@@ -17,7 +17,6 @@ class AddLibraryBook extends Component{
         await libraryService.create(book, data);
         await this.props.refreshLibrary();
         await this.props.updateOwnedBook(book[0].id)
-        // this.props.history.push('/library');
     }
 
     handleChange = e => {

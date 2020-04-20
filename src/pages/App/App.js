@@ -43,25 +43,28 @@ class App extends Component{
         book.owned && book.read ? ownedReadBooksCopy.push(book): book.owned && !book.read ? ownedUnreadBooksCopy.push(book) : wishListCopy.push(book)
     )
 
+    let sortedLibrary = library.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
+    let sortedOwnedRead = ownedReadBooksCopy.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
+    let sortedOwnedUnraed = ownedUnreadBooksCopy.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
+    let sortedWishList = wishListCopy.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
+    let sortedVideoLibrary = videoLibrary.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
+
+
     this.setState({
         ...this.state,
-        library,
-        videoLibrary,
-        ownedReadBooks:  ownedReadBooksCopy,
-        ownedUnreadBooks: ownedUnreadBooksCopy,
-        wishList: wishListCopy
+        library: sortedLibrary,
+        videoLibrary: sortedVideoLibrary,
+        ownedReadBooks:  sortedOwnedRead,
+        ownedUnreadBooks: sortedOwnedUnraed,
+        wishList: sortedWishList
     })
   }
 
   refreshLibrary = async () =>{
     let library = await getAll()
     let videoLibrary= await videoLibraryService.getAll()
+    this.seperateBooks(library, videoLibrary)
 
-    this.setState({
-      ...this.state,
-      library,
-      videoLibrary,
-    })
   }
 /////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////// LOGIN/LOGOUT Methods
@@ -156,7 +159,9 @@ async getVideos(searchTerm){
 handleAddVideo = async(video)=>{
 
   await videoLibraryService.create(video)
+  await this.refreshLibrary()
 }
+
 handleVideoLibrarySubmit = e =>{
   e.preventDefault()
 
@@ -187,7 +192,7 @@ handleVideoLibrarySubmit = e =>{
       
 {/*Route To Library Page  */}
           <Route path="/library" render={props =>
-
+            this.state.user ?
             <Library 
           
               {...props}
@@ -200,23 +205,29 @@ handleVideoLibrarySubmit = e =>{
               videoLibrary={this.state.videoLibrary}
               refreshLibrary={this.refreshLibrary}
             />
+            :
+            <About />
 
           }/>
 
 
 {/* Route to Book Page */}
           <Route path="/book-page/:id" render={(props)=>
+            this.state.user ?
             <BookPage 
               {...props}
               library={this.state.library}
               refreshLibrary={this.refreshLibrary}
               
             />
+            :
+            <About />
           }/>
 
 
 {/* Route to Books Search Page */}
           <Route path="/books" render={()=>
+          this.state.user ?
             <BookSearch 
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
@@ -233,6 +244,8 @@ handleVideoLibrarySubmit = e =>{
               handleVideoLibrarySubmit={this.handleVideoLibrarySubmit}
               refreshLibrary={this.refreshLibrary}
             />
+            : 
+            <About />
           }/>
 
 {/* LOGIN and SIGNUP ROUTES */}
