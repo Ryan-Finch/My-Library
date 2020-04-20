@@ -3,7 +3,7 @@
 My Library is an app developed to help keep track of the books on your shelf! It will keep a comprehensive list, that you can sort by what you have read and what you need to read still. You will be able to search for your books and add them to your library and designate where on the shelf they need to go. Create a wish list for the books you would like to own/read next! View what others are reading to see if they have anything that peeks your interest and add it to your list! Recently added addition: you can now search through youtube content and create a video library along with you book library, we've gone mutlimedia!<br>
 Coming soon to My Library:<br>
 -Bookclub: Find others that what to read the same book and join a book club where you can virtually meetup and talk about it!<br>
--Podcasts: Continuing to build and what we have, we will try and implemnt audio into on media library.<br>
+-Podcasts: Continuing to build and what we have, we will try and implement audio into on media library.<br>
 -Book Suggestions: Have a cureated list of suggested book based on what you have on your shelves.<br>
 
 
