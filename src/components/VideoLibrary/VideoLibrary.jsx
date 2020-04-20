@@ -21,7 +21,7 @@ function VideoLibrary(props){
                             <input className="card-body video-library-card-body" onChange={props.handleNameChange}/><button className="btn btn-secondary" onClick={props.handleRenameSubmit}id={video._id}>Submit</button>
                         </div>
                         :
-                        <div className="card-body video-library-card-body">{video.title}</div>  
+                        <div className="card-body video-library-card-body" dangerouslySetInnerHTML={{__html:`${video.title}`}}></div>  
                     }
                         <button onClick={props.handleDeleteVideo} className="btn btn-secondary" id={video._id}>Delete Video</button>
                         <button onClick={props.handleRenameClick} className="btn btn-secondary" id={video._id} value="true">Rename Video</button>

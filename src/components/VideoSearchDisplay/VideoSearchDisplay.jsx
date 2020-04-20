@@ -16,7 +16,7 @@ function VideoSearchDisplay(props){
                         title={video.id.videoId}
                         src={`https://www.youtube.com/embed/${video.id.videoId}`}>
                         </iframe>
-                    <div className="card-body video-search-card-body">{video.snippet.title}</div>
+                    <div className="card-body video-search-card-body" dangerouslySetInnerHTML={{__html:`${video.snippet.title}`}}></div>
 
                     {arr1.includes(video.id.videoId) ? 
                     null
