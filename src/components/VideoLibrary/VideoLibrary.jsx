@@ -12,7 +12,7 @@ function VideoLibrary(props){
 
                         <iframe 
                         className="video-library-iframe"
-                        title={video.id.videoId}
+                        title={video.videoId}
                         src={`https://www.youtube.com/embed/${video.videoId}`}>
                         </iframe>
 
