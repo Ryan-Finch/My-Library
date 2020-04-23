@@ -6,7 +6,6 @@ Coming soon to My Library:<br>
 -Podcasts: Continuing to build and what we have, we will try and implement audio into on media library.<br>
 -Book Suggestions: Have a cureated list of suggested book based on what you have on your shelves.<br>
 
-
 Trello Board Link<br>
 https://trello.com/b/ROb5V7j8/my-library
 (Trello conatins Wire-Frames and ERD)
